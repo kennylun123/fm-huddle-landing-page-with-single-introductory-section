@@ -1,0 +1,314 @@
+:root {
+  --clr-neutral-100: 0 0% 100%;
+  --clr-neutral-800: 0 0% 0%;
+
+  --clr-violet-400: 257 40% 49%;
+  --clr-magenta-400: 300 69% 71%;
+  --clr-magenta-500: 322 100% 66%;
+
+  /* Body */
+  --ff-sans: 'Open Sans', sans;
+  /* Headings */
+  --ff-sans-2: 'Poppins', sans;
+
+  /* button fs */
+  --fs-200: 0.75rem;
+  --fs-300: 0.875rem;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.5rem;
+
+  --fw-400: 400;
+  --fw-600: 600;
+
+/*
+  The designs were created to the following widths:
+
+  - Mobile: 375px
+  - Desktop: 1440px */
+}
+
+@media (min-width: 65em) {
+  :root {
+    --fs-200: 1.125rem;
+    --fs-400: 1.125rem;
+    --fs-600: 2.5rem;
+  }
+
+}
+
+
+/* ------------------------- */
+/*           Reset           */
+/* ------------------------- */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-400);
+  color: hsl(var(--clr-neutral-100));
+  background-color: hsl(var(--clr-violet-400));
+  background-image: url('images/bg-mobile.svg');
+  background-repeat: no-repeat;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------- Composition -------------- */
+.grid {
+  display: grid;
+  gap: var(--grid-gap, 1rem);
+}
+
+.flex {
+  display: flex;
+  gap: var(--flex-gap, 1rem);
+}
+/* ------------- Utility ------------------ */
+.ff-sans-2 {
+  font-family: var(--ff-sans-2);
+}
+
+.fw-600 {
+  font-weight: var(--fw-600);
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+/* ------------- Block -------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.container {
+  --grid-gap: 0;
+  min-height: 100vh;
+  min-width: fit-content;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: min-content auto min-content;
+  place-items: center;
+  padding: 2rem 2.25rem;
+}
+
+header {
+  grid-area: header;
+  justify-self: start;
+}
+
+main {
+  grid-area: main;
+  text-align: center;
+}
+
+footer {
+  grid-area: footer;
+  align-self: end;
+}
+
+.logo {
+  max-width: 8.125rem;
+}
+
+.intro {
+  --flex-gap: 3.8rem;
+  flex-direction: column;
+  margin: 3.7rem 0 4.25rem;
+  align-items: center;
+}
+
+.intro-content > h1 {
+  max-width: 20ch;
+  margin-inline: auto;
+}
+
+.intro-content > p {
+  margin-top: 1rem;
+}
+
+.intro-content > .button {
+  margin-top: 1.5rem;
+}
+
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--ff-sans-2);
+  font-size: var(--fs-200);
+}
+
+.button[data-state="primary"] {
+  background-color: hsl(var(--clr-neutral-100));
+  color: hsl(var(--clr-violet-400));
+  padding: 1em 6.25em;
+  border-radius: 25px;
+  box-shadow: 0px 5px 5px 0px hsl(var(--clr-neutral-800) / 0.2);
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+footer {
+  --flex-gap: 0.75rem;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: var(--fs-300);
+}
+
+.link[data-state="outline"] {
+  color: hsl(var(--clr-neutral-100));
+  padding: 0.375rem;
+  border: 1px solid hsl(var(--clr-neutral-100));
+  border-radius: 50%;
+  transition: color 200ms ease-in-out, border-color 200ms ease-in-out;
+}
+
+@media (min-width: 65em) {
+  body {
+    background-image: url(images/bg-desktop.svg);
+    background-size: cover;
+  }
+
+  .logo {
+    max-width: 13rem;
+  }
+
+  .container {
+    padding: 3.5rem 5rem;
+  }
+
+  main {
+    text-align: left;
+  }
+
+  .intro {
+    flex-direction: row;
+    margin: 5rem 0 1rem;
+  }
+
+  .intro-content {
+    align-self: start;
+  }
+
+  .intro-content > h1 {
+    margin-top: 3rem;
+    max-width: 20ch;
+  }
+
+  .intro-content > p {
+    margin-top: 1.5rem;
+    max-width: 50ch;
+  }
+
+  .button[data-state="primary"] {
+    padding: 0.75em 3.5em;
+    border-radius: 30px;
+  }
+
+  .link[data-state="outline"] {
+    padding: 0.6rem;
+  }
+
+  footer {
+    justify-self: end;
+    --flex-gap: 1rem;
+  }
+
+  .link {
+    font-size: var(--fs-500);
+  }
+
+}
+/* ------------- Exception ---------------- */
+.button[data-state="primary"]:hover,
+.button[data-state="primary"]:focus {
+  background-color: hsl(var(--clr-magenta-400));
+  color: hsl(var(--clr-neutral-100));
+}
+
+.link[data-state="outline"]:hover,
+.link[data-state="outline"]:focus {
+  color: hsl(var(--clr-magenta-500));
+  border-color: hsl(var(--clr-magenta-500));
+}
